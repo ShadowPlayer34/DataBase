@@ -1214,6 +1214,8 @@ INSERT sessioncoverage(sessionid)
 VALUES (34),(38),(39);
 SELECT * FROM sessioncoverage
 JOIN session ON sessioncoverage.sessionid = session.id;
+SELECT * FROM session
+JOIN sessionoperator ON session.id = sessionoperator.sessionid;
 SELECT * FROM organization
 JOIN farm ON organization.id = farm.organizationid;
 SELECT * FROM organization
@@ -1222,5 +1224,55 @@ SELECT * FROM placementtype
 JOIN fertilizerevent ON placementtype.id = fertilizerevent.placementtypeid;
 SELECT * FROM fertilizerevent
 JOIN fertilizereventmaterial ON fertilizerevent.id = fertilizereventmaterial.fertilizereventid;
+SELECT * FROM soiltype
+JOIN soiltest ON soiltype.id = soiltest.soiltypeid;
+SELECT * FROM soiltestdepth
+JOIN soiltest ON soiltestdepth.id = soiltest.depthid;
+SELECT * FROM eventtype
+JOIN fieldactivity ON eventtype.id = fieldactivity.eventtypeid;
+SELECT * FROM materialtype
+JOIN materialsubtype ON materialtype.id = materialsubtype.materialtypeid;
+SELECT * FROM asset
+JOIN sessionasset ON asset.id = sessionasset.assetid;
+SELECT * FROM implement
+JOIN sessionimplement ON implement.id = sessionimplement.implementid;
+SELECT * FROM plantschedule
+JOIN plantscheduledetail ON plantschedule.id = plantscheduledetail.plantscheduleid;
+SELECT * FROM organization
+JOIN plantschedule ON organization.id = plantschedule.organizationid;
+SELECT * FROM commoditycustomer
+JOIN requiredcommodity ON commoditycustomer.id = requiredcommodity.customerid;
+SELECT * FROM commoditycustomer
+JOIN commoditycontract ON commoditycustomer.id = commoditycontract.buyerid;
+SELECT * FROM fieldscouter
+JOIN fieldscouterfield ON fieldscouter.id = fieldscouterfield.fieldscouterid;
+SELECT * FROM fieldscouter
+JOIN fieldscouterrecommendation ON fieldscouter.id = fieldscouterrecommendation.fieldscouterid;
+SELECT * FROM fieldscouter
+JOIN fieldscouterdisease ON fieldscouter.id = fieldscouterdisease.fieldscouterid;
+SELECT * FROM fieldscouter
+JOIN fieldscouternematode ON fieldscouter.id = fieldscouternematode.fieldscouterid;
+SELECT * FROM fieldscouter
+JOIN fieldscouterweed ON fieldscouter.id = fieldscouterweed.fieldscouterid;
+SELECT * FROM fieldscouter
+JOIN fieldscoutersoil ON fieldscouter.id = fieldscoutersoil.fieldscouterid;
+SELECT * FROM processor
+JOIN processorplant ON processor.id = processorplant.processorid;
+SELECT * FROM processorplant
+JOIN processorplantcontract ON processorplant.id = processorplantcontract.processorplantid;
+SELECT * FROM permanentcrop
+JOIN observationresponse ON permanentcrop.id = observationresponse.permanentcropid;
+SELECT * FROM observationtypeoption
+JOIN observationresponse ON observationtypeoption.id = observationresponse.observationtypeoptionid;
+SELECT * FROM observationtype
+JOIN observationresponse ON observationtype.id = observationresponse.observationtypeid;
+SELECT * FROM croprootstock
+JOIN permanentcrop ON croprootstock.id = permanentcrop.croprootstockid;
+SELECT * FROM cropvarietyclone
+JOIN permanentcrop ON cropvarietyclone.id = permanentcrop.cropvarietycloneid;
+SELECT * FROM assettype
+JOIN asset ON assettype.id = asset.assettypeid;
+SELECT * FROM asset
+JOIN assetlocationhistory ON asset.id = assetlocationhistory.assetid;
 # where sessionid = 34
 # drop database TEST
